@@ -3,9 +3,11 @@ import rootRoute from './routes'
 import todosRoutes from './routes/todos'
 import bodyParser from 'body-parser'
 import userRouter from './routes/user'
+import cors from 'cors'
 
 const app = express()
 
+app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 app.use("/", rootRoute)
