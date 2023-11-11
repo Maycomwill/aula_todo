@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-interface ISButton extends React.HTMLAttributes<HTMLButtonElement> {}
+interface ISButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
 export const SButton = styled.button<ISButton>`
   width: 50%;

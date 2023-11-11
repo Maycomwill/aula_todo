@@ -22,7 +22,7 @@ const GlobalStyle = createGlobalStyle<ThemeProps<MyTheme>>`
 
   *{
     margin: 0;
-    padding: 0;
+    padding: 4px;
     box-sizing: border-box;
   }
 
