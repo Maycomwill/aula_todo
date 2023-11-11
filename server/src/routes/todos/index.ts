@@ -6,7 +6,9 @@ const parser = bodyParser.json();
 const todosRoutes = Router();
 
 todosRoutes.get("/", async (req: Request, res: Response) => {
-  const todos = await prisma.todos.findMany();
+  const todos = await prisma.todos.findMany({orderBy:{
+    createdAt: "desc"
+  }});
 
   return res.status(200).send(todos);
 });
@@ -36,12 +38,13 @@ todosRoutes.get("/user/:userId", parser, async (req: Request, res: Response) => 
 });
 
 todosRoutes.post("/", parser, async (req: Request, res: Response) => {
-  const { title, desc, userId } = req.body;
+  const { title, desc, userId, completed } = req.body;
   const todo = await prisma.todos.create({
     data: {
       title,
       desc,
       userId,
+      completed
     },
   });
   res.status(201).send(todo);
