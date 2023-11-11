@@ -35,8 +35,9 @@ export const Container = styled.div`
     justify-content: center;
     margin: 24px 0;
     width: 50%;
+  }
 
-    .wrapper {
+  .wrapper {
       width: 100%;
       display: flex;
       align-items: center;
@@ -44,5 +45,4 @@ export const Container = styled.div`
       text-decoration: none;
       color: currentColor;
     }
-  }
 `;

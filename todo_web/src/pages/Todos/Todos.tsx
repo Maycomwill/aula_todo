@@ -22,14 +22,16 @@ function Todos() {
           ? todos.map((todo, index) => {
               return (
                 <li key={index}>
-                  <Todo
-                    desc={todo.desc}
-                    id={todo.id}
-                    title={todo.title}
-                    userId={todo.userId}
-                    completed={todo.completed}
-                    createdAt={todo.createdAt}
-                  />
+                  <Link className="wrapper" to={`/todo/${todo.id}`}>
+                    <Todo
+                      desc={todo.desc}
+                      id={todo.id}
+                      title={todo.title}
+                      userId={todo.userId}
+                      completed={todo.completed}
+                      createdAt={todo.createdAt}
+                    />
+                  </Link>
                 </li>
               );
             })

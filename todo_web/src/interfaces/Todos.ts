@@ -17,10 +17,13 @@ export type UserType = {
 
 export interface TodosContextProps {
   getAllTodos: () => void;
+  getTodo: (id: string | undefined) => void;
+  deleteTodo: (id: string) => void;
   createTodo: (data: {
     title: string | undefined;
     desc: string | undefined;
     completed: boolean;
   }) => void;
   todos: TodoType[];
+  todo: TodoType | undefined;
 }

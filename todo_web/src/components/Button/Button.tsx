@@ -2,13 +2,13 @@ import { SButton } from "./styles";
 import Text from "../Text/Text";
 import { ButtonHTMLAttributes } from "react";
 
-interface TButton extends ButtonHTMLAttributes<HTMLButtonElement> {
+export interface TButton extends ButtonHTMLAttributes<HTMLButtonElement> {
   children: string;
 }
 
-function Button({ children }: TButton) {
+function Button({ children, ...rest }: TButton) {
   return (
-    <SButton>
+    <SButton {...rest}>
       <Text weight="black" size="md">
         {children}
       </Text>

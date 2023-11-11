@@ -1,8 +1,9 @@
 import styled from "styled-components";
+import { TButton } from "./Button";
 
-interface ISButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
+// interface ISButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {}
 
-export const SButton = styled.button<ISButton>`
+export const SButton = styled.button<TButton>`
   width: 50%;
   padding: 8px 0;
   outline: none;
