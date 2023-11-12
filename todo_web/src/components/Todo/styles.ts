@@ -13,7 +13,7 @@ function handleCompleted(completed: boolean) {
 }
 
 export const Container = styled.div<IContainer>`
-  width: calc(100% - 100px);
+  width: 100%;
   height: 300px;
   border-radius: 8px;
   display: flex;
@@ -24,10 +24,6 @@ export const Container = styled.div<IContainer>`
   text-align: center;
   background-color: ${({ completed }) => handleCompleted(completed)};
   transition: background-color 0.25s ease-in-out;
-  .wrapper {
-    width: 100%;
-    height: 100%;
-  }
 
   .content {
     height: 100%;
@@ -46,6 +42,11 @@ export const Container = styled.div<IContainer>`
     display: flex;
     flex: 1;
     margin: 12px 0px;
+    word-wrap: break-word;
+    line-break: strict;
+    padding: 4px;
+    text-align: justify;
+    width: 100%;
   }
 
   .date {

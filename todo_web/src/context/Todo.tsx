@@ -11,7 +11,7 @@ type TodosContextProviderProps = {
 export function TodosContextProvider({ children }: TodosContextProviderProps) {
   const [todo, setTodo] = useState<TodoType>();
   const [todos, setTodos] = useState<TodoType[]>([]);
-  
+
   async function getAllTodos() {
     setTodos([]);
     const todos = await api.get("/todos");
@@ -44,8 +44,21 @@ export function TodosContextProvider({ children }: TodosContextProviderProps) {
     }
   }
 
+  async function updateTodo(data: {
+    title: string | undefined;
+    desc: string | undefined;
+    completed: boolean | undefined;
+    id: string | undefined;
+  }) {
+    await api.patch(`/todos/${data.id}`, {
+      title: data.title,
+      desc: data.desc,
+      completed: data.completed,
+    });
+  }
+
   async function deleteTodo(id: string) {
-    console.log(id)
+    console.log(id);
     await api.delete(`/todos/${id}`);
     alert("Tarefa excluída com sucesso");
   }
@@ -58,6 +71,7 @@ export function TodosContextProvider({ children }: TodosContextProviderProps) {
         getTodo,
         deleteTodo,
         createTodo,
+        updateTodo,
         todos,
         todo,
       }}

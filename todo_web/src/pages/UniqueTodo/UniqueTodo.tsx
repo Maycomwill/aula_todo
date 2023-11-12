@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Outlet, useNavigate, useParams } from "react-router-dom";
 import { useTodos } from "../../hooks/useTodos";
 import Todo from "../../components/Todo/Todo";
 import { Container } from "./styles";
@@ -13,7 +13,7 @@ function UniqueTodo() {
 
   useEffect(() => {
     getTodo(id);
-  }, []);
+  }, [getTodo, id]);
 
   function handleDeleteTodo() {
     console.log("chegou");
@@ -21,6 +21,7 @@ function UniqueTodo() {
     if (deletePromt) {
       deleteTodo(todo!.id);
       navigate("/todos");
+      window.location.reload();
     }
   }
 
@@ -36,10 +37,11 @@ function UniqueTodo() {
           id={todo.id}
         />
         <div className="controlls">
-          <Button onClick={() => console.log("AA")}>Alterar</Button>
+          <Button onClick={() => navigate(`/todo/${id}/alter`)}>Alterar</Button>
           <Button onClick={() => handleDeleteTodo()}>Deletar</Button>
-          <Button onClick={() => navigate(-1)}>Voltar</Button>
+          <Button onClick={() => navigate("/todos")}>Voltar</Button>
         </div>
+        <Outlet />
       </Container>
     );
   } else {

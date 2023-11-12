@@ -1,25 +1,36 @@
-import { FormEvent, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { useTodos } from "../../hooks/useTodos";
-import { useNavigate } from "react-router-dom";
-import Button from "../Button/Button";
-import { TodoForm } from "./style";
+import { TodoForm } from "./styles";
+import { FormEvent, useEffect, useState } from "react";
 import Text from "../Text/Text";
+import Button from "../Button/Button";
+import CheckInput from "../CheckInput/CheckInput";
 
-function Form() {
-  const { createTodo } = useTodos();
+function AlterForm() {
   const navigate = useNavigate();
-  const [title, setTitle] = useState<string>();
-  const [desc, setDesc] = useState<string>("");
-  const [completed, setCompleted] = useState<boolean>(false);
+  const params = useParams();
+  const id = params.todoId;
+  const { getTodo, todo, updateTodo } = useTodos();
+
+  const [title, setTitle] = useState<string | undefined>();
+  const [desc, setDesc] = useState<string | undefined>();
+  const [completed, setCompleted] = useState<boolean | undefined>();
+
+  useEffect(() => {
+    getTodo(id);
+    setTitle(todo!.title);
+    setDesc(todo?.desc);
+    setCompleted(todo?.completed);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <TodoForm
-      action=""
       onSubmit={(e: FormEvent) => {
         e.preventDefault();
-        createTodo({ title, desc, completed });
-        navigate("/todos");
-        window.location.reload()
+        updateTodo({ title, desc, completed, id });
+        navigate(`/todo/${todo!.id}`);
+        window.location.reload();
       }}
     >
       <div className="title">
@@ -27,7 +38,6 @@ function Form() {
           <Text size="md">Título:</Text>
         </label>
         <input
-          required
           type="text"
           name="title"
           id=""
@@ -53,18 +63,17 @@ function Form() {
         <label htmlFor="completed">
           <Text size="md">Concluído:</Text>
         </label>
-        <input
-          type="checkbox"
-          id="completed"
-          name="interest"
+        <CheckInput
+          checked={completed}
+          name="completed"
           onChange={() => {
             setCompleted(!completed);
           }}
         />
       </div>
-      <Button type="submit">Criar Tarefa</Button>
+      <Button type="submit">atualizar Tarefa</Button>
     </TodoForm>
   );
 }
 
-export default Form;
+export default AlterForm;

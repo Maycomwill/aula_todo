@@ -7,7 +7,7 @@ const todosRoutes = Router();
 
 todosRoutes.get("/", async (req: Request, res: Response) => {
   const todos = await prisma.todos.findMany({orderBy:{
-    createdAt: "desc"
+    createdAt: "asc"
   }});
 
   return res.status(200).send(todos);

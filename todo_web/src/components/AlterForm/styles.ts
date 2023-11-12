@@ -2,8 +2,7 @@ import { darken, tint } from "polished";
 import styled from "styled-components";
 
 export const TodoForm = styled.form`
-  height: 50vh;
-  width: 50%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 12px;
@@ -74,9 +73,11 @@ export const TodoForm = styled.form`
     label {
       width: 20%;
     }
+
     input {
       font-size: 16px;
       accent-color: #17dda7;
     }
   }
+
 `;

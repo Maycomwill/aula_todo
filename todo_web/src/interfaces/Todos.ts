@@ -19,6 +19,12 @@ export interface TodosContextProps {
   getAllTodos: () => void;
   getTodo: (id: string | undefined) => void;
   deleteTodo: (id: string) => void;
+  updateTodo: (data: {
+    title: string | undefined;
+    desc: string | undefined;
+    id: string | undefined;
+    completed: boolean | undefined;
+  }) => void;
   createTodo: (data: {
     title: string | undefined;
     desc: string | undefined;

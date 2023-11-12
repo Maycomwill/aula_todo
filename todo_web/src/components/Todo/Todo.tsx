@@ -6,13 +6,6 @@ import { formatInTimeZone } from "date-fns-tz";
 import { ptBR } from "date-fns/locale";
 
 function Todo({ desc, title, completed, createdAt }: TodoType) {
-  let desc_resume;
-  if (desc.length > 100) {
-    desc_resume = desc.substring(1, 40).concat("...");
-  } else {
-    desc_resume = desc;
-  }
-
   const date = formatInTimeZone(
     parseISO(createdAt),
     "America/Sao_Paulo",
@@ -21,7 +14,7 @@ function Todo({ desc, title, completed, createdAt }: TodoType) {
       locale: ptBR,
     }
   );
-  console.log(date);
+  // console.log(date);
   return (
     <Container completed={completed}>
       <div className="content">
@@ -31,7 +24,7 @@ function Todo({ desc, title, completed, createdAt }: TodoType) {
           </Text>
         </div>
         <div className="desc">
-          <Text>{desc_resume}</Text>
+          <Text>{desc}</Text>
         </div>
         <div className="date">
           <Text size="sm">Criado em: {date}</Text>

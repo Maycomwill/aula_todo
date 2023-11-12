@@ -1,24 +1,44 @@
-import { createBrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "../pages/Home/Home";
 import Todos from "../pages/Todos/Todos";
-import Todo from "../pages/UniqueTodo/UniqueTodo";
 import CreateTodo from "../pages/CreateTodo/CreateTodo";
+import UpdateTodo from "../pages/UpdateTodo/UpdateTodo";
+import UniqueTodo from "../pages/UniqueTodo/UniqueTodo";
 
-export const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Home />,
-  },
-  {
-    path: "/todos",
-    element: <Todos />,
-  },
-  {
-    path: "/todo/:todoId",
-    element: <Todo />,
-  },
-  {
-    path: "/create",
-    element: <CreateTodo />,
-  },
-]);
+// export const router = createBrowserRouter([
+//   {
+//     path: "/",
+//     element: <Home />,
+//   },
+//   {
+//     path: "/todos",
+//     element: <Todos />,
+//   },
+//   {
+//     path: "/todo/:todoId",
+//     element: <Todo />,
+//   },
+//   {
+//     path: "/create",
+//     element: <CreateTodo />,
+//   },
+//   {
+//     path: "/todo/:todoId/alter",
+//     element: <UpdateTodo />,
+//   },
+// ]);
+
+export function IndexRoutes() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path={"/"} element={<Home />} />
+        <Route path={"/todos"} element={<Todos />} />
+        <Route path={"/create"} element={<CreateTodo />} />
+        <Route path={"/todo/:todoId"} element={<UniqueTodo />}>
+          <Route path={"/todo/:todoId/alter"} element={<UpdateTodo />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
