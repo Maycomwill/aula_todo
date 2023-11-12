@@ -51,7 +51,7 @@ todosRoutes.post("/", parser, async (req: Request, res: Response) => {
 });
 
 todosRoutes.patch("/:id", parser, async (req: Request, res: Response) => {
-  const { title, desc } = req.body;
+  const { title, desc, completed } = req.body;
   const todo = await prisma.todos.update({
     where: {
       id: req.params["id"],
@@ -59,6 +59,7 @@ todosRoutes.patch("/:id", parser, async (req: Request, res: Response) => {
     data: {
       title,
       desc,
+      completed
     },
   });
 
