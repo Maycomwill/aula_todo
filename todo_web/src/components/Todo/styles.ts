@@ -9,7 +9,7 @@ function handleCompleted(completed: boolean) {
   if (completed) {
     return "#02ab37";
   }
-  return "#121214";
+  return "#c5c5c5";
 }
 
 export const Container = styled.div<IContainer>`

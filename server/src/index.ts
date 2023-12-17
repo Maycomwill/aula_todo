@@ -8,9 +8,7 @@ import cors from "cors";
 const app = express();
 
 app.use(
-  cors({
-    origin: "http://localhost:5173",
-  })
+  cors()
 );
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

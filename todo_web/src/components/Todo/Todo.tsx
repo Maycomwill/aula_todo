@@ -13,7 +13,7 @@ function Todo({ desc, title, completed, createdAt }: TodoType) {
     {
       locale: ptBR,
     }
-  );
+  );''
   // console.log(date);
   return (
     <Container completed={completed}>

@@ -5,29 +5,6 @@ import CreateTodo from "../pages/CreateTodo/CreateTodo";
 import UpdateTodo from "../pages/UpdateTodo/UpdateTodo";
 import UniqueTodo from "../pages/UniqueTodo/UniqueTodo";
 
-// export const router = createBrowserRouter([
-//   {
-//     path: "/",
-//     element: <Home />,
-//   },
-//   {
-//     path: "/todos",
-//     element: <Todos />,
-//   },
-//   {
-//     path: "/todo/:todoId",
-//     element: <Todo />,
-//   },
-//   {
-//     path: "/create",
-//     element: <CreateTodo />,
-//   },
-//   {
-//     path: "/todo/:todoId/alter",
-//     element: <UpdateTodo />,
-//   },
-// ]);
-
 export function IndexRoutes() {
   return (
     <BrowserRouter>

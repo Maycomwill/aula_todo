@@ -1,4 +1,3 @@
-
 import { ThemeProps, createGlobalStyle } from "styled-components";
 
 import { DefaultTheme } from "styled-components";
@@ -31,8 +30,8 @@ const GlobalStyle = createGlobalStyle<ThemeProps<MyTheme>>`
   }
 
   body {
-    background: ${()=> darkTheme.background};
-    color: ${() => darkTheme.text};
+    background: ${(MyTheme) => MyTheme.background};
+    color: ${(MyTheme) => MyTheme.text};
     overflow-x: hidden;
 
     /* width */

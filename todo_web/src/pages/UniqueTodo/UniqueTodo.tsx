@@ -13,7 +13,7 @@ function UniqueTodo() {
 
   useEffect(() => {
     getTodo(id);
-  }, [getTodo, id]);
+  }, []);
 
   function handleDeleteTodo() {
     console.log("chegou");

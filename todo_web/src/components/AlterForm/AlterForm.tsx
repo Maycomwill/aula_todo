@@ -16,6 +16,8 @@ function AlterForm() {
   const [desc, setDesc] = useState<string | undefined>();
   const [completed, setCompleted] = useState<boolean | undefined>();
 
+  console.log(completed);
+
   useEffect(() => {
     getTodo(id);
     setTitle(todo!.title);
